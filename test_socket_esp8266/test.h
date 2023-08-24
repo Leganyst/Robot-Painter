@@ -19,19 +19,19 @@ body { background-color: #1d1f21; font-family: 'Hack', monospace; color: #c5c8c6
 <div class='buttons'>
   <div class='button-group'>
     <div class='button-row'>
-      <div class='button'><input type='button' value='↖' onmousedown='startSending(5)' onmouseup='stopSending()' ontouchstart='startSending(8)' ontouchend='stopSending()'></div>
-      <div class='button'><input type='button' value='↑' onmousedown='startSending(1)' onmouseup='stopSending()' ontouchstart='startSending(2)' ontouchend='stopSending()'></div>
-      <div class='button'><input type='button' value='↗' onmousedown='startSending(6)' onmouseup='stopSending()' ontouchstart='startSending(9)' ontouchend='stopSending()'></div>
+      <div class='button'><input type='button' value='↖' onmousedown='startSending(5)' onmouseup='stopSending(9)' ontouchstart='startSending(8)' ontouchend='stopSending(9)'></div>
+      <div class='button'><input type='button' value='↑' onmousedown='startSending(1)' onmouseup='stopSending(9)' ontouchstart='startSending(2)' ontouchend='stopSending(9)'></div>
+      <div class='button'><input type='button' value='↗' onmousedown='startSending(6)' onmouseup='stopSending(9)' ontouchstart='startSending(9)' ontouchend='stopSending(9)'></div>
     </div>
     <div class='button-row'>
-      <div class='button'><input type='button' value='←' onmousedown='startSending(2)' onmouseup='stopSending()' ontouchstart='startSending(4)' ontouchend='stopSending()'></div>
-      <div class='button'><input type='button' value='○' onmousedown='startSending(0)' onmouseup='stopSending()' ontouchstart='startSending(0)' ontouchend='stopSending()'></div>
-      <div class='button'><input type='button' value='→' onmousedown='startSending(3)' onmouseup='stopSending()' ontouchstart='startSending(6)' ontouchend='stopSending()'></div>
+      <div class='button'><input type='button' value='←' onmousedown='startSending(2)' onmouseup='stopSending(9)' ontouchstart='startSending(4)' ontouchend='stopSending(9)'></div>
+      <div class='button'><input type='button' value='○' onmousedown='startSending(9)' onmouseup='stopSending(9)' ontouchstart='startSending(0)' ontouchend='stopSending(9)'></div>
+      <div class='button'><input type='button' value='→' onmousedown='startSending(3)' onmouseup='stopSending(9)' ontouchstart='startSending(6)' ontouchend='stopSending(9)'></div>
     </div>
     <div class='button-row'>
-      <div class='button'><input type='button' value='↙' onmousedown='startSending(7)' onmouseup='stopSending()' ontouchstart='startSending(7)' ontouchend='stopSending()'></div>
-      <div class='button'><input type='button' value='↓' onmousedown='startSending(4)' onmouseup='stopSending()' ontouchstart='startSending(3)' ontouchend='stopSending()'></div>
-      <div class='button'><input type='button' value='↘' onmousedown='startSending(8)' onmouseup='stopSending()' ontouchstart='startSending(5)' ontouchend='stopSending()'></div>
+      <div class='button'><input type='button' value='↙' onmousedown='startSending(7)' onmouseup='stopSending(9)' ontouchstart='startSending(7)' ontouchend='stopSending(9)'></div>
+      <div class='button'><input type='button' value='↓' onmousedown='startSending(4)' onmouseup='stopSending(9)' ontouchstart='startSending(3)' ontouchend='stopSending(9)'></div>
+      <div class='button'><input type='button' value='↘' onmousedown='startSending(8)' onmouseup='stopSending(9)' ontouchstart='startSending(5)' ontouchend='stopSending(9)'></div>
     </div>
   </div>
 </div>
@@ -42,11 +42,12 @@ var interval;
 function startSending(command) {
   interval = setInterval(function() {
     socket.send(command.toString());
-  }, 100); // Отправляем каждые 100 миллисекунд
+  }, 10); // Отправляем каждые 10 миллисекунд
 }
 
-function stopSending() {
+function stopSending(command) {
   clearInterval(interval);
+  socket.send(command.toString());
 }
 </script>
 </body></html>
